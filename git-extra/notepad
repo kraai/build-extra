@@ -5,13 +5,13 @@ die () {
 	exit 1
 }
 
+test $# = 1 ||
+die "Usage: $0 <file>"
+
 case "$1" in
 */.git/*) ;; # needs LF line endings
 *) exec notepad.exe "$1" || die "Could not launch notepad.exe";;
 esac
-
-test $# = 1 ||
-die "Usage: $0 <file>"
 
 if test -f "$1"
 then
